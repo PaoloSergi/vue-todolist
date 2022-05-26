@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Vue ToDoList</title>
+</head>
+<body>
+    <div id="app">
+        <nav>
+            <input @keyup.enter="addNewTodo" v-model="newTodoText" type="text"name="addTodo" placeholder="Add todo..">
+            <input @click="addNewTodo" type="button" value="Add todo">
+        </nav>
+
+        <main>
+            <div v-for="(todo, i) in todos" class="todo">
+                <span @click="doneUndone(i)" :class="todo.done === true ? 'done' : ''">
+                    {{todo.text}}
+                </span>
+    
+                <i @click="removeTodo(i)" class="fas fa-times"></i>
+            </div>
+        </main>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
